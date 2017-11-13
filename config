@@ -1,11 +1,12 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
 # Your preferred terminal emulator
 set $term termite
-# Menu
-set $menu dmenu_run -fn "Noto Mono-10" -l 5 -sb grey 
+
 # System Fonts
 font System  Noto Mono Regular 10
+
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
 output * bg /home/peace/.config/sway/wall --scaling stretch
 
@@ -17,9 +18,6 @@ output * bg /home/peace/.config/sway/wall --scaling stretch
        middle_emulation enabled
        events disabled_on_external_mouse
     }
-
-# Run Menu
-bindsym F3 exec $menu
 
 # start a terminal
 bindsym $mod+Return exec $term
@@ -44,65 +42,63 @@ bindsym XF86MonBrightnessDown   exec brightnessctl s 4%-
 # Despite the name, also works for non-floating windows.
 # Change normal to inverse to use left mouse button for resizing and right
 # mouse button for dragging.
+
 floating_modifier $mod normal
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # exit sway (logs you out of your wayland session)
 bindsym $mod+Shift+e exit
 
 # Awesome-style container traversal using Vim-like binding
 set $next Tab
 
-# Moving around:
+## Moving around:
 
-    # Move your focus around
-    bindsym $mod+$next focus next
+# Move your focus around
+bindsym $mod+$next focus next
 
-    # _move_ the focused window with the same, but add Shift
-    bindsym $mod+Shift+$next move next
+# _move_ the focused window with the same, but add Shift
+bindsym $mod+Shift+$next move next
 
 # Workspace Variables
-	set $w1 1:
-	set $w2 2:
-	set $w3 3:
-	set $w4 4:
-	set $w5 5:
-	set $w6 6:
-    set $w7 7:
-	set $w9 9:
-	set $w10 10:
-# Workspaces:
+set $w1 1:
+set $w2 2:
+set $w3 3:
+set $w4 4:
+set $w5 5:
+set $w6 6:
+set $w7 7:
+set $w9 9:
+set $w10 10:
 
-    # switch to workspace
-    bindsym $mod+1 workspace $w1
-    bindsym $mod+2 workspace $w2
-    bindsym $mod+3 workspace $w3
-    bindsym $mod+4 workspace $w4
-    bindsym $mod+5 workspace $w5
-    bindsym $mod+6 workspace $w6
-    bindsym $mod+7 workspace $w7
-    bindsym $mod+8 workspace $w8
-    bindsym $mod+9 workspace $w9
-    bindsym $mod+0 workspace $w10
+## Workspaces:
+# switch to workspace
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace $w9
+bindsym $mod+0 workspace $w10
 
 
-    bindsym $mod+Shift+1 move container to workspace $w1
-    bindsym $mod+Shift+2 move container to workspace $w2
-    bindsym $mod+Shift+3 move container to workspace $w3
-    bindsym $mod+Shift+4 move container to workspace $w4
-    bindsym $mod+Shift+5 move container to workspace $w5
-    bindsym $mod+Shift+6 move container to workspace $w6
-    bindsym $mod+Shift+7 move container to workspace $w7
-    bindsym $mod+Shift+8 move container to workspace $w8
-    bindsym $mod+Shift+9 move container to workspace $w9
-    bindsym $mod+Shift+0 move container to workspace $w10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-#
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9
+bindsym $mod+Shift+0 move container to workspace $w10
 
 # Layout:
-#
-#
     workspace_layout auto left
     # This is usually bound to $mod+space, but this works well in practice by keeping
     # all the layout switching keys grouped together.
@@ -156,18 +152,12 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-
-    # Main execution
-    status_command .config/sway/status.sh 
-    # Position
+# Position
     position bottom
-
-    # Numbers in status bar
-    strip_workspace_numbers yes
-    
-    # Bar fonts
+# Numbers in status bar
+    strip_workspace_numbers yes    
+# Bar fonts
     font Noto Mono 9 
-
     colors {
 	background $bg-color
 	separator #757575
@@ -201,6 +191,4 @@ bindsym Control+Shift+Escape    exec --no-startup-id swaymsg 'workspace 9:; e
 # StartUp execution applications
 exec --no-startup-id swaylock -u -i .config/sway/lock --scaling stretch
 exec --no-startup-id chromium 
-exec --no-startup-id nautilus
-exec --no-startup-id swaymsg 'workspace 10:;   exec termite -e wicd-curses;    workspace 1:'
 exec --no-startup-id termite
